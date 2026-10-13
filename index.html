@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erasmus Capitals Guide</title>
+<meta name="description" content="Student guide for Erasmus mobilities in 8 EU capitals: accommodation, transport, food, sights, budget and essentials.">
+<style>
+:root{
+  --ink:#1B1B3A; --muted:#55557A; --bg:#FFF8EC; --card:#FFFFFF; --line:#1B1B3A;
+  --pink:#FF3D81; --orange:#FF8A00; --yellow:#FFC300; --green:#00C48C; --cyan:#00B8D9; --blue:#3D5AFE; --purple:#8E44FF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;font-size:16px}
+a{color:var(--blue)}
+header{background:linear-gradient(120deg,var(--pink) 0%,var(--orange) 28%,var(--yellow) 48%,var(--green) 66%,var(--cyan) 82%,var(--purple) 100%);padding:28px 16px 22px;border-bottom:4px solid var(--ink)}
+.wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:clamp(1.9rem,6vw,3rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink)}
+header p{margin:8px 0 0;font-size:1.05rem;font-weight:600;max-width:60ch}
+.notice{background:var(--ink);color:#fff;font-size:.88rem;padding:10px 16px}
+.notice .wrap{display:flex;gap:10px;align-items:flex-start}
+.notice b{color:var(--yellow)}
+nav.cities{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:2px solid var(--ink);padding:10px 16px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.chip{flex:0 0 auto;font:inherit;font-weight:700;cursor:pointer;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:7px 14px;transition:transform .12s}
+.chip:hover{transform:translateY(-2px)}
+.chip:focus-visible,.tab:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.chip[aria-current="true"]{background:var(--c,var(--ink));color:var(--on,#fff);box-shadow:3px 3px 0 var(--ink)}
+.chip .dot{display:inline-block;width:.7em;height:.7em;border-radius:50%;background:var(--c);border:1.5px solid var(--ink);margin-right:6px}
+.chip[aria-current="true"] .dot{display:none}
+main{padding:20px 16px 48px}
+.hero{background:var(--c);color:var(--on);border:3px solid var(--ink);border-radius:22px;padding:22px;box-shadow:6px 6px 0 var(--ink)}
+.hero h2{margin:0;font-size:clamp(2rem,7vw,3.4rem);line-height:1;letter-spacing:-.02em}
+.hero .sub{margin:6px 0 14px;font-weight:600;font-size:1.05rem}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:12px;padding:6px 12px;font-size:.88rem}
+.pill b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 14px}
+.tab{font:inherit;font-weight:700;cursor:pointer;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:12px;padding:8px 14px}
+.tab[aria-selected="true"]{background:var(--sc);color:var(--so);box-shadow:3px 3px 0 var(--ink)}
+.panel{--sc:var(--pink)}
+.card{background:var(--card);border:2px solid var(--ink);border-left:10px solid var(--sc);border-radius:16px;padding:16px 18px;margin:0 0 14px;box-shadow:4px 4px 0 rgba(27,27,58,.15)}
+.card h3{margin:0 0 10px;font-size:1.1rem}
+.intro{font-size:1.05rem;margin:0 0 14px;font-weight:500}
+dl.rows{margin:0;display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:10px 16px}
+dl.rows dt{font-weight:800;color:var(--ink)}
+dl.rows dd{margin:0}
+dl.rows .note{display:block;color:var(--muted);font-size:.9rem;margin-top:2px}
+.warn{display:inline-block;margin-top:6px;background:#FFE8A3;border:1.5px solid var(--ink);border-radius:8px;padding:2px 8px;font-size:.84rem;font-weight:600}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.item{border:2px solid var(--ink);border-radius:14px;padding:12px 14px;background:#fff}
+.item h4{margin:0 0 4px;font-size:1rem}
+.item p{margin:0;font-size:.93rem}
+.badge{display:inline-block;margin-top:8px;font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 9px;border:1.5px solid var(--ink)}
+.badge.src{background:#B7F5DF}
+.badge.loc{background:#FFD9A8}
+.sources{font-size:.85rem;color:var(--muted);margin-top:18px;border-top:2px dashed var(--ink);padding-top:12px}
+.sources ul{margin:6px 0 0;padding-left:18px}
+.tablewrap{overflow-x:auto;border:2px solid var(--ink);border-radius:16px;background:#fff;box-shadow:4px 4px 0 rgba(27,27,58,.15)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:.93rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1.5px solid #E3DFF2;vertical-align:top}
+th{background:var(--ink);color:#fff;position:sticky;top:0}
+td:first-child{font-weight:800;white-space:nowrap}
+td button{all:unset;cursor:pointer;color:var(--blue);text-decoration:underline;font-weight:800}
+footer{background:var(--ink);color:#fff;padding:22px 16px;font-size:.88rem}
+footer a{color:var(--yellow)}
+@media (max-width:640px){
+  dl.rows{grid-template-columns:1fr;gap:2px}
+  dl.rows dd{margin-bottom:10px}
+  .hero{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chip{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Erasmus Capitals Guide</h1>
+    <p>Where to live, how to get around, what to eat and what to see: 8 European capitals, one page.</p>
+  </div>
+</header>
+<div class="notice"><div class="wrap"><span aria-hidden="true">⚠️</span><span><b>Read this first:</b> an unofficial student guide. Prices are indicative and were compiled from the web on <b>13 Oct 2026</b>; sources are linked in every section. Where sources disagree, the app says so. Always confirm with your host university and the official transport operator before paying anything.</span></div></div>
+
+<nav class="cities" aria-label="Cities"><div class="wrap"><div class="chips" id="chips"></div></div></nav>
+<main><div class="wrap" id="view"></div></main>
+
+<footer><div class="wrap">Unofficial, student-made guide. Not affiliated with ASE or the Erasmus+ programme. Local-knowledge items (food, sights) are general recommendations and are marked as such; opening hours and ticket prices change, so check before you go. To add a city, copy one object in the <code>CITIES</code> array in this file.</div></footer>
+
+<script>
+/* ============ SOURCES (consulted 13 Oct 2026) ============ */
+const SRC = {
+  uniMadErasmus:{t:"Uniplaces: Erasmus in Madrid (2026)",u:"https://www.uniplaces.com/city-explorer/erasmus-in-madrid-student-guide/"},
+  uniMadCost:{t:"Uniplaces: Cost of living in Madrid (2026)",u:"https://www.uniplaces.com/city-explorer/cost-of-living-in-madrid-2026-student-budget-rent-prices-and-monthly-expenses/"},
+  applyBoard:{t:"ApplyBoard: Student life in Spain 2026-27, transport guide",u:"https://assist.applyboard.com/hc/en-us/articles/45685512732173-Student-Life-in-Spain-2026-2027-Cultural-Transport-Guide"},
+  siMadrid:{t:"StudyInEurope: Student cost of living in Madrid",u:"https://www.studyineurope.eu/student-cost-of-living-in-madrid/"},
+  wuMadrid:{t:"WU Vienna exchange report, Universidad Complutense (SoSe 2026)",u:"https://exchangereports.wu.ac.at/en/pub/reports/1297"},
+
+  uniLisErasmus:{t:"Uniplaces: Erasmus in Lisbon (2026)",u:"https://www.uniplaces.com/city-explorer/erasmus-in-lisbon-student-guide/"},
+  uniLisCost:{t:"Uniplaces: Cost of living in Lisbon (2026)",u:"https://www.uniplaces.com/city-explorer/cost-of-living-in-lisbon-2026/"},
+  ulisboa:{t:"University of Lisbon: practical information",u:"https://www.ulisboa.pt/en/info/practical-information"},
+  belas:{t:"ULisboa Faculty of Fine Arts: info for Erasmus students",u:"https://www.belasartes.ulisboa.pt/mobilidade/erasmus-estudos/outras-informacoes-2/"},
+  iscte:{t:"ISCTE Lisbon: international student guide 2026",u:"https://www.iscte-iul.pt/assets/files/resources/20623"},
+  ispa:{t:"ISPA Lisbon: Erasmus+ fact sheet",u:"https://www.ispa.pt/en/living-and-studying-at-ispa/"},
+  erasmusPlayLis:{t:"Erasmus Play: Erasmus in Lisbon",u:"https://erasmusplay.com/pl/lisboa/erasmus-in-lisboa.html"},
+  tuebLis:{t:"Student report, FCT NOVA Lisbon (Univ. Tübingen, WS 2025/26)",u:null},
+
+  uniRomeErasmus:{t:"Uniplaces: Erasmus in Rome (2026)",u:"https://www.uniplaces.com/city-explorer/erasmus-in-rome-student-guide/"},
+  uniRomeCost:{t:"Uniplaces: Cost of living in Rome (2026)",u:"https://www.uniplaces.com/city-explorer/cost-of-living-in-rome-2026/"},
+  wuRome:{t:"WU Vienna exchange report, LUISS (SoSe 2026)",u:"https://exchangereports.wu.ac.at/en/pub/reports/194"},
+  campusRome:{t:"Erasmus in Campus (Tor Vergata guide, date unknown)",u:"https://economia.uniroma2.it/public/erasmus/files/Campus_service_.pdf"},
+  eurovista:{t:"Euro Vista Trips: Living in Rome as a student (May 2026)",u:"https://eurovistatrips.com/is-it-expensive-to-live-in-rome-as-a-student/"},
+  templeRome:{t:"Temple University: Student accommodation in Rome",u:"https://sites.temple.edu/learningowl/ultimate-guide-to-student-accommodation-in-rome/"},
+  mdwRome:{t:"mdw Vienna blog: Life in Rome (2019, older)",u:"https://mdw.ac.at/internationalblog/2019/06/11/das-leben-in-der-hauptstadt-italiens/"},
+  erasmusPlayRome:{t:"Erasmus Play: Erasmus in Rome",u:"https://erasmusplay.com/en/roma/erasmus-in-roma.html"},
+
+  uniParisErasmus:{t:"Uniplaces: Erasmus in Paris (2026)",u:"https://www.uniplaces.com/city-explorer/erasmus-in-paris-student-guide/"},
+  uniParisCost:{t:"Uniplaces: Cost of living in Paris (2026)",u:"https://www.uniplaces.com/city-explorer/cost-of-living-in-paris-2026/"},
+  parisCite:{t:"Université Paris Cité: mobility aid and housing",u:"https://u-paris.fr/odontologie/venir-a-paris/aide-a-la-mobilite/"},
+  musicParis:{t:"Mood: Student guide to Paris (2026)",u:"https://www.musicofourdesire.com/blog/student-guide-paris"},
+  unitoFr:{t:"Univ. of Turin: Erasmus in France (2025)",u:"https://www.unito.it/sites/default/files/2025-06/erasmus_francia.pdf"},
+
+  uniBerErasmus:{t:"Uniplaces: Erasmus in Berlin (2026)",u:"https://www.uniplaces.com/city-explorer/erasmus-in-berlin-student-guide/"},
+  uniBerCost:{t:"Uniplaces: Cost of living in Berlin (2026)",u:"https://www.uniplaces.com/city-explorer/cost-of-living-in-berlin-2026/"},
+  gradGermany:{t:"GradGermany: Berlin on a budget (Sep 2026)",u:"https://www.gradgermany.com/blog/berlin-on-budget-student-living-costs"},
+  siBerlin:{t:"StudyInEurope: Student cost of living in Berlin",u:"https://www.studyineurope.eu/es/student-cost-of-living-in-berlin/"},
+
+  studyAT:{t:"Study-Abroad.org: Study costs Austria (Mar 2026)",u:"https://www.study-abroad.org/de/blog/at-costs-guide/"},
+  cartoVienna:{t:"TU Wien cartography master: Living in Vienna",u:"https://cartographymaster.eu/student-life/city-info-vienna/"},
+  ccAustria:{t:"College Council: Cost of living for students in Austria",u:"https://college-council.com/en/blog/cost-of-living-for-students-in-austria"},
+  kadamboVienna:{t:"Kadam Overseas: Cost of living in Vienna (Sep 2026)",u:"https://kadamboverseas.com/cost-of-living-in-vienna-indian-students-2026/"},
+  oeadHousing:{t:"OeAD student housing (registration)",u:"https://housing.oead.at"},
+  jenaVienna:{t:"Student report, Univ. Vienna (Univ. Jena)",u:"https://bio.uni-jena.de/biophamedia/24925/erfahrungsbericht-wien.pdf"},
+
+  cuniDorms:{t:"Charles University: Erasmus dorm info (date unknown)",u:"https://cuni.cz/UKEN-365-version1.pdf"},
+  umprum:{t:"UMPRUM Prague: accommodation for exchange students",u:"https://www.umprum.cz/en/web/student/exchange-students/practical-guide-and-life-in-prague/accommodation"},
+  mupPrague:{t:"Metropolitan Univ. Prague: exchange guide 2024/25",u:"https://www.ugal.ie/media/collegeofartssocialsciencescelticstudies/international/MUP_Exchange_Student_Guide2024-2025.pdf"},
+  siPrague:{t:"StudyInEurope: Student cost of living in Prague",u:"https://www.studyineurope.eu/student-cost-of-living-in-prague/"},
+  cefres:{t:"CEFRES: Living in Prague",u:"https://cefres.cz/en/living-in-prague/"},
+  ccCzechia:{t:"College Council: Cost of living for students in Czechia",u:"https://college-council.com/en/blog/cost-of-living-for-students-in-czechia"},
+  wuPrague:{t:"WU Vienna exchange report, Prague Univ. of Economics (SoSe 2026)",u:"https://exchangereports.wu.ac.at/en/public/1189"},
+  uni2study:{t:"Uni2Study: Studying in Prague (2026)",u:"https://www.uni2study.com/articles/studying-prague-universities-costs-housing-student-life"},
+
+  uwWarsaw:{t:"University of Warsaw: cost of living",u:"https://bwz.uw.edu.pl/koszty-zycia/"},
+  wutWarsaw:{t:"Warsaw Univ. of Technology: Erasmus accommodation",u:"https://erasmus.pw.edu.pl/erasmusen/Incoming-Students/Accommodation"},
+  awfWarsaw:{t:"AWF Warsaw: Erasmus accommodation 2025/26",u:"https://www.awf.edu.pl/wspolpraca-z-zagranica/en/erasmus/accommodation"},
+  apsWarsaw:{t:"Maria Grzegorzewska Univ.: Erasmus+ survival guide 26/27",u:"https://www.aps.edu.pl/media/bagdh4x5/erasmus-survival-guide-26-27.pdf"},
+  siWarsaw:{t:"StudyInEurope: Student cost of living in Warsaw",u:"https://www.studyineurope.eu/he/student-cost-of-living-in-warsaw/"}
+};
+
+/* ============ HELPERS ============ */
+const r=(k,v,n,w,s)=>({k,v,n,w,s:s||[]});          // row: label, value, note, warning, sources
+const i=(h,t,s)=>({h,t,s:s||[]});                 // item card: heading, text, sources
+
+/* ============ DATA ============ */
+const CITIES = [
+{
+  id:"madrid", name:"Madrid", country:"Spain", flag:"🇪🇸", c:"#FF3D81", on:"#FFFFFF",
+  tag:"Late nights, great food and one of the cheapest youth transport passes in Europe.",
+  pills:[["Shared room","€500–800"],["Transport","€10–20 / mo"],["Typical budget","€900–1,300"]],
+  sections:{
+    stay:{intro:"Rent is the biggest cost. Book housing early: exchange students report that applying before arrival made getting a residence room easy.",
+      rows:[
+        r("Room in shared flat","About €600 on average (range roughly €500–800)","Shared rooms close to universities often reach €600–800.",null,["uniMadCost","siMadrid"]),
+        r("Studio","About €950 / month",null,null,["uniMadCost"]),
+        r("Student residences","Private residences exist and fill early","One WU exchange student booked a residence early and had no problems.",null,["wuMadrid"]),
+        r("Upfront costs","Deposit usually 1–2 months' rent, plus the first month in advance",null,null,["uniMadCost"])
+      ],
+      blocks:[{title:"Neighbourhoods",items:[
+        i("Malasaña & Lavapiés","Described as the coolest and most affordable central areas.",["siMadrid"]),
+        i("Moncloa","The traditional student area, next to Complutense University.",["siMadrid"])
+      ]}]},
+    move:{intro:"Madrid's youth pass is the main thing to sort out before or right after arrival.",
+      rows:[
+        r("Abono Joven (ages 15–25)","€10 / month, valid in all zones","Covers Metro, EMT buses, light rail and suburban trains (zones A to E2).","2026 guides say €10; older pages still quote €20/month. Confirm the current price on the Madrid transport authority (CRTM) site.",["applyBoard","uniMadCost","uniMadErasmus"]),
+        r("How to get it","Needs a personal reloadable TTP card issued by CRTM","A returning exchange student advises applying before you arrive.",null,["applyBoard","wuMadrid"]),
+        r("Age limit","Up to 25 (under 26)","Older students cannot use the youth pass.",null,["applyBoard"])
+      ]},
+    eat:{intro:"Eating well is cheap if you use the lunch menu and cook some meals at home.",
+      blocks:[{title:"What to try",items:[
+        i("Menú del día","Weekday fixed-price lunch (starter, main, dessert, drink). The classic budget meal in Spain."),
+        i("Tapas & raciones","Small plates to share; many bars in Lavapiés and Malasaña are student-friendly."),
+        i("Bocadillo de calamares","Fried-squid sandwich, a Madrid classic, easy to find around Plaza Mayor."),
+        i("Churros con chocolate","Late-night or breakfast treat; every neighbourhood has a churrería."),
+        i("Mercado de San Fernando","Neighbourhood market in Lavapiés; a more local alternative to the touristy Mercado de San Miguel.")
+      ]},{title:"Money-saving tip",items:[i("Cook at home","Cooking at home and using student transport passes are the two big savings recommended for Madrid.",["uniMadCost"])]}]},
+    see:{intro:"Madrid's big art museums are within walking distance of each other.",
+      blocks:[{title:"Must-see",items:[
+        i("Museo del Prado","Spanish masters; student entry is free or heavily discounted at most times.",["siMadrid"]),
+        i("Museo Reina Sofía","Modern art, home of Picasso's Guernica."),
+        i("Parque del Retiro","Huge central park; good for weekends and studying outdoors."),
+        i("Palacio Real & Plaza Mayor","Royal Palace and the historic square, close to Puerta del Sol."),
+        i("Templo de Debod","Egyptian temple in a park; popular for sunset.")
+      ]},{title:"Day trips",items:[
+        i("Toledo","Medieval city, about 30 minutes by fast train."),
+        i("Segovia","Roman aqueduct and fairytale Alcázar."),
+        i("El Escorial & Alcalá de Henares","Royal monastery and a UNESCO university town, both reachable by Cercanías commuter train.")
+      ]},{title:"Sport",items:[i("La Liga matches","Student tickets for Real Madrid and Atlético matches are often available at a discount.",["siMadrid"])]}]},
+    money:{intro:"Rent decides whether Madrid is cheap or expensive for you.",
+      rows:[
+        r("Typical student budget","€900–1,300 / month","Depends mostly on housing type.",null,["uniMadCost"]),
+        r("Shared room","~€600 (€500–800)",null,null,["uniMadCost","siMadrid"]),
+        r("Transport","€10 / month (verify, older sources say €20)",null,null,["applyBoard","uniMadCost"])
+      ]},
+    tips:{intro:"Essentials for your first weeks.",
+      blocks:[{title:"Do this early",items:[
+        i("Transport card","Order the Abono Joven / TTP card right after arrival or before.",["applyBoard","wuMadrid"]),
+        i("Housing","Start the search before you leave; residences fill quickly.",["wuMadrid"]),
+        i("ESN Madrid","Local Erasmus Student Network sections run welcome weeks and trips. Look up the section of your host university.")
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number. Works from any phone, free of charge.")]}]}
+  }
+},
+{
+  id:"lisbon", name:"Lisbon", country:"Portugal", flag:"🇵🇹", c:"#00B8D9", on:"#1B1B3A",
+  tag:"Sunny, hilly and affordable by Western European standards, with a huge Erasmus scene.",
+  pills:[["Shared room","€300–700"],["Transport","~€35–40 / mo"],["Typical budget","€800–1,300"]],
+  sections:{
+    stay:{intro:"Most Erasmus students rent privately, because university residences have very few places for incoming students.",
+      rows:[
+        r("Room in shared flat","€300–700; most students pay about €400–550","University of Lisbon quotes €300–450; ISCTE says €350–950 depending on the room.",null,["uniLisCost","ulisboa","iscte"]),
+        r("Studios & residences","About €500–800",null,null,["uniLisErasmus"]),
+        r("University residences","ULisboa has 19; places for incoming students are limited (around 10% of incomers)","Apply through your faculty's international/Erasmus office.",null,["belas","ulisboa"]),
+        r("Utilities","Add about €80–130 / month","Check whether bills are included in the advertised rent.",null,["uniLisCost","ulisboa"])
+      ],
+      blocks:[{title:"Smart moves",items:[
+        i("Arrive a few days early","The faculty advises arriving before classes start, since finding a room is demanding.",["belas"]),
+        i("Watch for scams","Be cautious if a room in Lisbon is advertised with a non-Portuguese bank account.",["iscte"]),
+        i("Ask your Erasmus office","Faculty Erasmus offices keep lists of accommodation contacts.",["belas"])
+      ]}]},
+    move:{intro:"A monthly Navegante pass covers metro, bus, tram and suburban trains.",
+      rows:[
+        r("Navegante Metropolitano","About €35–40 / month","Unlimited metro, Carris bus and tram, and Lisbon-area trains.","ULisboa quotes €35, Uniplaces about €40.",["uniLisCost","ulisboa","belas"]),
+        r("Under-23 discount","Heavily discounted, possibly free","A 2025/26 student report says public transport was free for under-23s.","Confirm the current rule and price with the operator.",["uniLisCost","tuebLis"]),
+        r("NIF needed","A Portuguese tax number (NIF) is required for the student-discount pass",null,null,["belas","tuebLis"]),
+        r("Night travel","Metro closes early and night buses run limited timetables",null,null,["erasmusPlayLis"])
+      ]},
+    eat:{intro:"Portuguese food is hearty and cheap if you eat where locals eat.",
+      blocks:[{title:"What to try",items:[
+        i("Pastel de nata","Custard tart. The original bakery in Belém always has a queue; plenty of good bakeries elsewhere."),
+        i("Prato do dia","Plate of the day at a local tasca; the best-value lunch."),
+        i("Bifana & prego","Pork and steak sandwiches, ideal cheap bites."),
+        i("Bacalhau","Salt cod, cooked in many ways. Try it at a tasca rather than a tourist spot."),
+        i("Time Out Market","Large food hall in Cais do Sodré; fun but pricier than neighbourhood places.")
+      ]}]},
+    see:{intro:"Lisbon is best explored on foot, with a few tram and train rides.",
+      blocks:[{title:"Must-see",items:[
+        i("Belém","Belém Tower and Jerónimos Monastery."),
+        i("Alfama & Castelo de São Jorge","Old quarter and hilltop castle."),
+        i("Miradouros","Viewpoints across the city; free and perfect at sunset."),
+        i("Tram 28","Classic route through the old neighbourhoods; very busy, go early."),
+        i("LX Factory","Creative complex with shops, cafés and street art.")
+      ]},{title:"Day trips",items:[
+        i("Sintra","Palaces and forest, about 40 minutes by train."),
+        i("Cascais & beaches","Train along the coast; beaches also at Costa da Caparica."),
+        i("Arrábida","Natural park south of the Tagus with beaches and viewpoints.")
+      ]}]},
+    money:{intro:"Lisbon is cheaper than most Western capitals, but rents have risen.",
+      rows:[
+        r("Typical student budget","€800–1,300 / month","Uniplaces says €800–1,200; ISPA says €900–1,300.",null,["uniLisCost","uniLisErasmus","ispa"]),
+        r("Groceries","About €180–280 / month",null,null,["uniLisCost"]),
+        r("Transport","About €30–40 / month",null,null,["uniLisCost","ispa"])
+      ]},
+    tips:{intro:"Paperwork and practicalities.",
+      blocks:[{title:"Do this early",items:[
+        i("Health insurance","EU/EEA students should carry a valid European Health Insurance Card (EHIC).",["ispa"]),
+        i("NIF","Get your tax number before applying for the student transport card.",["belas"]),
+        i("SIM card","Mobile shops at the international airports sell SIM cards.",["ulisboa"]),
+        i("Bank account","Optional, but useful for longer stays.",["ispa"])
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number.")]}]}
+  }
+},
+{
+  id:"rome", name:"Rome", country:"Italy", flag:"🇮🇹", c:"#FF8A00", on:"#1B1B3A",
+  tag:"The largest Erasmus destination in Italy: history on every corner, with rent to match.",
+  pills:[["Shared room","€350–800"],["Transport","~€35 / mo"],["Typical budget","€800–1,200"]],
+  sections:{
+    stay:{intro:"Housing decides your experience. Sapienza alone hosts over 3,000 incoming exchange students a year, so demand is high.",
+      rows:[
+        r("Room in shared flat","€450–800","Other guides give €350–600. A WU student near LUISS paid €600–850 and called that fair.",null,["uniRomeCost","eurovista","wuRome"]),
+        r("Cheaper areas","San Lorenzo and Pigneto","Trastevere and Prati cost more.",null,["uniRomeErasmus"]),
+        r("Heating & bills","Old buildings can add about €80 / month in winter",null,null,["templeRome"]),
+        r("Contract type","Contratto transitorio (3–18 months) suits a semester","Ask for a written contract and for the lease to be registered.",null,["templeRome"]),
+        r("Erasmus housing service","An association run by ex-Erasmus students offers rooms and orientation","Figures in its Tor Vergata guide (single rooms ≈ €350–450 + bills) are of unknown date.","Treat prices as old until confirmed.",["campusRome"])
+      ],
+      blocks:[{title:"Smart moves",items:[
+        i("Arrive early","Italians often arrange rooms in person. Student reports advise booking a short stay and searching on the spot.",["mdwRome"]),
+        i("Test your commute","Run your 8 a.m. route before signing; a cheap room far from the metro loses its value.",["templeRome"])
+      ]}]},
+    move:{intro:"One monthly ATAC pass covers metro, bus and tram within the city.",
+      rows:[
+        r("ATAC monthly pass","About €35","Another guide says €30; another quotes €23–35.","Confirm the current fare on the ATAC site.",["uniRomeCost","wuRome","eurovista","erasmusPlayRome"]),
+        r("Where to buy","At a tabaccheria (tobacconist)",null,null,["wuRome","mdwRome"]),
+        r("Coverage","Valid within Rome; suburbs may need a regional pass",null,null,["eurovista"]),
+        r("Daily pass","€7",null,null,["uniRomeCost"]),
+        r("Reliability","ATAC is described as unreliable; allow extra time",null,null,["wuRome"])
+      ]},
+    eat:{intro:"Rome is expensive to eat out in, but there are local tricks.",
+      blocks:[{title:"What to try",items:[
+        i("Aperitivo","A drink (about €8–10 in a 2019 report) comes with a buffet of snacks, which can replace dinner.",["mdwRome","uniRomeCost"]),
+        i("Roman pasta","Carbonara, cacio e pepe, amatriciana. Best in family-run trattorias away from the main sights."),
+        i("Pizza al taglio","Pizza by the slice, sold by weight; cheap and filling."),
+        i("Supplì","Fried rice balls with mozzarella, a classic street snack."),
+        i("Testaccio","Neighbourhood known for good, relatively cheap food, though far from many lecture halls.",["templeRome"]),
+        i("San Lorenzo & Pigneto","Lively student bar and restaurant areas.",["uniRomeErasmus"])
+      ]}]},
+    see:{intro:"Rome mixes ancient, medieval and Renaissance history within walking distance.",
+      blocks:[{title:"Must-see",items:[
+        i("Colosseum & Roman Forum","Book timed tickets in advance in busy periods."),
+        i("Pantheon & Piazza Navona","Two of the most atmospheric stops in the old centre."),
+        i("Trevi Fountain","Best early in the morning or late at night."),
+        i("Vatican Museums & St Peter's","Check the dress code and book ahead."),
+        i("Trastevere & Villa Borghese","Evening walks and a big park for a break.")
+      ]},{title:"Day trips",items:[
+        i("Ostia Antica","Well-preserved ancient port town, reachable by commuter train."),
+        i("Tivoli","Hadrian's Villa and Villa d'Este."),
+        i("Beaches","Students report spending weekends at the beach by train.",["wuRome"])
+      ]}]},
+    money:{intro:"Rome and Milan are the two priciest Italian student cities.",
+      rows:[
+        r("Typical student budget","€800–1,200 / month","Rent is the dominant cost.",null,["uniRomeErasmus","uniRomeCost","eurovista"]),
+        r("Groceries","About €200–300 / month",null,null,["uniRomeCost"]),
+        r("Utilities","About €80–130 / month",null,null,["uniRomeCost"]),
+        r("Transport","About €35 / month",null,null,["uniRomeCost","wuRome"])
+      ]},
+    tips:{intro:"Practicalities for Italy.",
+      blocks:[{title:"Do this early",items:[
+        i("Contract","Insist that payments are written in the contract and that the lease is registered.",["templeRome"]),
+        i("Erasmus support","A local association run by ex-Erasmus students offers orientation, parties and room-finding help.",["campusRome"]),
+        i("Health insurance","Carry your European Health Insurance Card (EHIC).")
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number.")]}]}
+  }
+},
+{
+  id:"paris", name:"Paris", country:"France", flag:"🇫🇷", c:"#8E44FF", on:"#FFFFFF",
+  tag:"Expensive on paper, but France's student support system can cut your real costs a lot.",
+  pills:[["Shared room","€600–900"],["Transport","€33–44 / mo"],["Typical budget","not sourced"]],
+  sections:{
+    stay:{intro:"Paris is one of the most expensive student cities, but CROUS housing, rent subsidies and rent control help.",
+      rows:[
+        r("Shared room","€600–900 (less after housing aid)",null,null,["uniParisCost","unitoFr"]),
+        r("Studio","About €750–1,200",null,null,["unitoFr"]),
+        r("CROUS residences","About €200–500 / month","Another source puts rooms at €200–330 and renovated studios at €320–470, charges included.","The new CROUS price grid is published on crous-paris.fr around late August.",["uniParisCost","musicParis"]),
+        r("Availability","Very limited places; apply through your host university's international office as soon as you get the acceptance letter",null,null,["parisCite"]),
+        r("Rent control","Paris has rent control (encadrement des loyers); you can check if a rent is legal",null,null,["uniParisCost"]),
+        r("Housing aid (CAF/APL)","A government rent subsidy open to students, including many internationals, once you have a signed lease","Can offset a large part of the rent.",null,["uniParisErasmus"])
+      ],
+      blocks:[{title:"Where to look",items:[
+        i("Listing sites","Leboncoin, SeLoger, Studapart, Bien'ici and Lokaviz are the usual platforms.",["unitoFr","uniParisErasmus"]),
+        i("20th arrondissement","Cited as a de facto student and creative district with lower rents than the centre.",["musicParis"])
+      ]}]},
+    move:{intro:"The student pass is far cheaper than the standard Navigo. Prices differ between sources, so check before budgeting.",
+      rows:[
+        r("Imagine R Étudiant (under 26)","About €33–44 / month","Around 50% cheaper than Navigo.","Uniplaces says ~€33/month; another 2026-27 guide says €43.70/month or €401.30/year. Confirm on the Île-de-France Mobilités site.",["uniParisCost","musicParis","parisCite"]),
+        r("Navigo monthly (standard)","About €75–88 / month","All zones.","Sources differ (€75.20 vs ~€88).",["parisCite","uniParisCost"]),
+        r("How to get it","Set up Imagine R early; a French bank account helps",null,null,["uniParisErasmus"])
+      ]},
+    eat:{intro:"Student canteens are the biggest saving, and bakeries do cheap lunch sets.",
+      blocks:[{title:"Cheap & good",items:[
+        i("CROUS Resto U","University restaurants serve full meals for students at about €3.25–3.30.",["parisCite","unitoFr"]),
+        i("Boulangerie lunch set","A sandwich, drink and dessert 'formule' is a standard cheap lunch."),
+        i("Crêpes","Street and sit-down crêperies are good value."),
+        i("Marché d'Aligre","Market in the 12th arrondissement with fresh produce at fair prices."),
+        i("Bistro lunch menu","Fixed-price lunch menus are cheaper than dinner à la carte.")
+      ]}]},
+    see:{intro:"Many state museums are free for under-26 EU residents; carry proof of age and student status.",
+      blocks:[{title:"Must-see",items:[
+        i("Free museums for under-26s","Free entry to many state museums for under-26 EU residents. Check each museum's rules.",["uniParisCost","uniParisErasmus"]),
+        i("Louvre & Musée d'Orsay","The two major art museums."),
+        i("Eiffel Tower & Seine","Best seen on a walk along the river at sunset."),
+        i("Montmartre & Sacré-Cœur","Hilltop village feel with big views."),
+        i("Jardin du Luxembourg & Père Lachaise","Park and famous cemetery for slower days.")
+      ]},{title:"Day trips",items:[
+        i("Versailles","Palace and gardens, reachable by RER train."),
+        i("Giverny & Fontainebleau","Monet's garden and a royal château."),
+      ]}]},
+    money:{intro:"No total monthly budget is given in the sources used, so this view shows the main components only.",
+      rows:[
+        r("Shared room","€600–900 (less after APL)",null,null,["uniParisCost"]),
+        r("CROUS room","€200–500",null,null,["uniParisCost","musicParis"]),
+        r("Student transport","€33–44 / month",null,"Sources differ.",["uniParisCost","musicParis"]),
+        r("CROUS meal","About €3.25–3.30",null,null,["parisCite","unitoFr"])
+      ]},
+    tips:{intro:"Paris paperwork pays off if you do it early.",
+      blocks:[{title:"Do this early",items:[
+        i("Apply for CAF/APL","Apply as soon as you have a signed lease.",["uniParisErasmus"]),
+        i("French bank account","Helps with CAF and rent payments.",["uniParisErasmus"]),
+        i("Housing request","Ask the international office about CROUS rooms as soon as you receive your acceptance letter.",["parisCite"])
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number.")]}]}
+  }
+},
+{
+  id:"berlin", name:"Berlin", country:"Germany", flag:"🇩🇪", c:"#00C48C", on:"#1B1B3A",
+  tag:"Creative, multicultural and famously alternative, with a very competitive room market.",
+  pills:[["Shared room","€450–800"],["Transport","€37.80 / mo"],["Typical budget","€910–1,200"]],
+  sections:{
+    stay:{intro:"WG (shared flat) is the standard way to live. The room market moves in hours, so be ready to reply fast.",
+      rows:[
+        r("WG room","€450–800; average about €650 (summer 2026)","Wedding and Neukölln: €400–650. Mitte and Prenzlauer Berg: €600–800.",null,["uniBerCost","gradGermany"]),
+        r("Student dorm (Studentenwerk)","About €250–450","Long waiting lists.",null,["uniBerErasmus"]),
+        r("Kaltmiete vs Warmmiete","Cold rent excludes heating, water and building costs; warm rent includes them","Always ask which one is advertised.",null,["uniBerErasmus","uniBerCost"]),
+        r("Where to search","WG-Gesucht.de is the main platform",null,null,["siBerlin"])
+      ],
+      blocks:[{title:"Best rent-to-life ratio",items:[
+        i("Wedding, Neukölln, Friedrichshain","Recommended areas for affordable rooms and a good social scene.",["uniBerCost"])
+      ]}]},
+    move:{intro:"Many universities include a student transport ticket in the semester fee. Confirm that this applies to you as an exchange student.",
+      rows:[
+        r("Semester ticket","€37.80 / month from winter semester 2026/27","Included in the semester fee at most public universities. At TU Berlin, the winter 2026/27 fee is €379.06, of which €226.80 is the ticket.",null,["gradGermany","uniBerCost"]),
+        r("Without a semester ticket","Standard Deutschlandticket: €63 / month","Applies at some private institutions.",null,["gradGermany"]),
+        r("Single ticket","€3.50 (zone AB), valid 90 minutes",null,null,["uniBerCost"]),
+        r("Coverage","Metro, S-Bahn, bus and tram across Berlin",null,null,["uniBerCost"])
+      ]},
+    eat:{intro:"Berlin is cheap for street food and canteens.",
+      blocks:[{title:"What to try",items:[
+        i("Mensa","University canteens serve full meals at student prices."),
+        i("Döner kebab","Berlin's signature fast food and a budget staple."),
+        i("Currywurst","Sausage with curry ketchup, available at every Imbiss."),
+        i("Markthalle Neun","Food hall in Kreuzberg with street-food events."),
+        i("Maybachufer market","Turkish market along the canal in Neukölln, on set days of the week."),
+        i("Späti","Late-night corner shops with cheap drinks and snacks.")
+      ]}]},
+    see:{intro:"Berlin is large; use your transport pass to explore different districts.",
+      blocks:[{title:"Must-see",items:[
+        i("Brandenburg Gate & Reichstag","The Reichstag dome is free; you need to register in advance."),
+        i("East Side Gallery","Longest surviving stretch of the Wall, covered in murals."),
+        i("Museum Island","UNESCO-listed group of museums."),
+        i("Tempelhofer Feld","Former airport turned giant park, great for cycling and picnics."),
+        i("Berlin Wall Memorial","Open-air memorial on Bernauer Straße with a visitor centre.")
+      ]},{title:"Day trips",items:[
+        i("Potsdam","Sanssouci Palace and parks, reachable by S-Bahn."),
+        i("Spreewald","Canals and forests, popular for kayaking."),
+        i("Dresden","About two hours by train.")
+      ]},{title:"Music",items:[i("Electronic music capital","Famous for its club and electronic music scene.",["siBerlin"])]}]},
+    money:{intro:"A realistic month is higher than the old '€800 student budget' figures.",
+      rows:[
+        r("Average realistic month","About €1,204","Based on an average room of €650.",null,["gradGermany"]),
+        r("With a cheap room (€450)","About €909",null,null,["gradGermany"]),
+        r("Transport","€37.80 / month (semester ticket)",null,null,["gradGermany"])
+      ]},
+    tips:{intro:"German bureaucracy: do it early.",
+      blocks:[{title:"Do this early",items:[
+        i("Anmeldung","Registering your address with the city is described as 'all-important'. You often need it for a bank account and other admin.",["uniBerErasmus"]),
+        i("Be ready for WG interviews","Rooms go quickly; reply within hours and visit in person.",["gradGermany"]),
+        i("Confirm the semester ticket","Ask your host university whether exchange students pay the semester fee and receive the ticket.")
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number.")]}]}
+  }
+},
+{
+  id:"vienna", name:"Vienna", country:"Austria", flag:"🇦🇹", c:"#3D5AFE", on:"#FFFFFF",
+  tag:"Elegant, safe and extremely well connected, with a tiny semester ticket price.",
+  pills:[["Shared room","€400–600"],["Transport","€75 / semester"],["Typical budget","€1,000–1,400"]],
+  sections:{
+    stay:{intro:"Student halls fill months ahead. Register early, or go for a WG.",
+      rows:[
+        r("WG room","€400–600","A WG room in the 10th district (Favoriten) costs about €450.",null,["cartoVienna","studyAT"]),
+        r("Student dorm","€350–550","OeAD residences: €340–620. HOMA student houses: €280–480.",null,["cartoVienna","kadamboVienna"]),
+        r("OeAD housing","Reserve through the OeAD online registration","Halls fill months ahead.",null,["oeadHousing","ccAustria"]),
+        r("Deposit","Up to 3 months' rent for WG rooms, returned at the end","Reported by one source.",null,["kadamboVienna"])
+      ],
+      blocks:[{title:"Where to search",items:[
+        i("WG-Gesucht, willhaben.at","Main platforms for shared flats, plus university Facebook groups.",["studyAT"])
+      ]}]},
+    move:{intro:"Vienna's semester ticket is one of the cheapest in Europe.",
+      rows:[
+        r("Semester ticket (under 26)","€75 / semester (about €12.50 / month)","€75 applies to students with their main residence in Vienna; €150 for those living outside.","One 2026 source mentions a youth annual pass at €300/year. Confirm the current rule on the Wiener Linien site.",["studyAT","cartoVienna","ccAustria"]),
+        r("Where to buy","At Wiener Linien sales points or online","On-site purchase gives a physical ticket; online gives a digital ticket. Bring proof of student status.",null,["jenaVienna","kadamboVienna"]),
+        r("Network","5 metro lines, 28 tram lines, 100+ bus routes",null,null,["kadamboVienna"])
+      ]},
+    eat:{intro:"Vienna has a strong cafe culture and cheap street food.",
+      blocks:[{title:"What to try",items:[
+        i("Würstelstand","Sausage stands, a classic cheap meal, also late at night."),
+        i("Wiener Schnitzel","Breaded veal or pork; best in a Beisl (traditional pub) rather than a tourist restaurant."),
+        i("Naschmarkt","Long market with stalls and snack bars."),
+        i("Kaffeehaus","Traditional coffee house culture; order a melange and stay for hours."),
+        i("Mensa","University canteens for cheap lunches."),
+        i("Apfelstrudel","Apple strudel, a staple dessert.")
+      ]}]},
+    see:{intro:"Many sights are close to each other in the centre.",
+      blocks:[{title:"Must-see",items:[
+        i("Schönbrunn Palace","Imperial summer palace with big gardens."),
+        i("Belvedere","Palace museum, home of Klimt's The Kiss.",["kadamboVienna"]),
+        i("St Stephen's Cathedral","Gothic cathedral in the centre."),
+        i("Vienna State Opera","Standing-room tickets are cheap; one source cites €4–15.",["kadamboVienna"]),
+        i("Prater & Danube Island","Amusement park with the Riesenrad, and a long island for jogging and swimming.")
+      ]},{title:"Day trips",items:[
+        i("Bratislava","About an hour away by train or boat."),
+        i("Wachau valley","Wine region along the Danube."),
+        i("Kahlenberg","Hill above Vienna with views; popular Erasmus outing.")
+      ]}]},
+    money:{intro:"Vienna is not cheap, but transport is.",
+      rows:[
+        r("Typical monthly budget","€1,000–1,400","Includes WG rent €450–600, food €250–300, transport €12.50 and personal spending €100–150.",null,["studyAT"]),
+        r("Student dorm","€280–620",null,null,["cartoVienna","kadamboVienna"]),
+        r("Transport","€75 / semester",null,"Confirm current price.",["studyAT","cartoVienna"])
+      ]},
+    tips:{intro:"Admin that saves money.",
+      blocks:[{title:"Do this early",items:[
+        i("Apply for a hall early","OeAD halls fill months ahead.",["ccAustria","oeadHousing"]),
+        i("Register your residence","The cheaper semester ticket applies to students with main residence in Vienna.",["cartoVienna"]),
+        i("ESN / EBN events","Erasmus groups organise events and trips all semester.")
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number.")]}]}
+  }
+},
+{
+  id:"prague", name:"Prague", country:"Czechia", flag:"🇨🇿", c:"#FFC300", on:"#1B1B3A",
+  tag:"Beautiful, safe and well connected; costs have risen but still beat Western capitals.",
+  pills:[["Dorm","€180–340"],["Transport","~CZK 180 / 30d"],["Typical budget","€750–1,300"]],
+  sections:{
+    stay:{intro:"Dorms are the cheapest option, but private rentals are hard to find for short stays.",
+      rows:[
+        r("University dorm","About €180–340 / month","At Charles University, a deposit (about €90) and first month's rent (about €150) were due before arrival.","The Charles University dorm document has no date; treat amounts as indicative.",["ccCzechia","cuniDorms"]),
+        r("Dorm application","Via the Erasmus online registration; deadlines were May 15 and Oct 31",null,null,["cuniDorms"]),
+        r("Room in shared flat","From about CZK 10,000 (≈ €400)","Inner-suburb flats from CZK 17,000 (≈ €700); city centre from CZK 22,000 (≈ €1,000).",null,["cefres"]),
+        r("1+1 flat","€500–650 in the suburbs; €650–800 near the centre",null,null,["umprum"]),
+        r("Short-term rent","Difficult; one exchange student found Airbnb to be the only route","Very expensive.",null,["wuPrague"])
+      ],
+      blocks:[{title:"Where to live",items:[
+        i("Prague 2, 3, 6, 10","Well connected and cheaper than Prague 1.",["siPrague"]),
+        i("Žižkov","Cheaper rent, known for its bar scene.",["uni2study"])
+      ]}]},
+    move:{intro:"The student pass is excellent value, but the exact price and eligibility depend on age and status.",
+      rows:[
+        r("Student pass (PID Lítačka)","CZK 180 / 30 days; CZK 435 / 90 days; CZK 1,280 / year","Standard fares: CZK 550 / 1,480 / 3,650.","Figures are from a 2024/25 university guide; another guide quotes €10–18 per month. Confirm on pid.cz.",["mupPrague","siPrague"]),
+        r("Tickets","Via the PID Lítačka app, metro machines and yellow machines on trams and buses",null,null,["cefres"]),
+        r("Airport Express","Regular Prague tickets are not valid on the Airport Express bus",null,null,["mupPrague"])
+      ]},
+    eat:{intro:"Czech food is hearty, and beer is cheaper than water in many pubs.",
+      blocks:[{title:"What to try",items:[
+        i("Denní menu","Weekday lunch menus in restaurants: soup plus a main for a fixed price. The best-value meal."),
+        i("Svíčková","Beef in cream sauce with dumplings, the classic Czech dish."),
+        i("Czech pubs","Pilsner and local beers; choose pubs outside Prague 1 for lower prices."),
+        i("University canteens","Charles University runs refectories alongside its dorms.",["cuniDorms"]),
+        i("Náplavka riverside market","Saturday farmers' market along the Vltava river embankment.")
+      ]}]},
+    see:{intro:"The historic centre is a UNESCO site and very walkable.",
+      blocks:[{title:"Must-see",items:[
+        i("Prague Castle","Largest ancient castle complex in the world."),
+        i("Charles Bridge & Old Town Square","Go early to avoid crowds; see the Astronomical Clock."),
+        i("Vyšehrad & Petřín Hill","Quieter viewpoints with green space."),
+        i("Josefov","The old Jewish Quarter with synagogues and the old cemetery."),
+        i("Letná Park","Local hangout with a skyline view and beer garden.")
+      ]},{title:"Day trips",items:[
+        i("Kutná Hora","Medieval silver town with a famous bone chapel."),
+        i("Karlštejn","Gothic castle, easy train ride."),
+        i("Český Krumlov","Fairytale town in South Bohemia; plan a full day or weekend.")
+      ]}]},
+    money:{intro:"Costs have risen sharply over the last decade.",
+      rows:[
+        r("Typical monthly budget","€750–1,300","Two sources give different ranges: €750–1,150 and €900–1,300.",null,["ccCzechia","siPrague"]),
+        r("Dorm","€180–340",null,null,["ccCzechia"]),
+        r("Currency","Czech koruna (CZK), not the euro",null,null,["siPrague"])
+      ]},
+    tips:{intro:"Practicalities for Czechia.",
+      blocks:[{title:"Do this early",items:[
+        i("Dorm registration","Use the Erasmus online registration well before the deadline.",["cuniDorms"]),
+        i("Safety","A WU exchange student described Prague as very safe and with weekly Erasmus events.",["wuPrague"]),
+        i("Transport app","Install PID Lítačka for tickets and passes.",["cefres"])
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number.")]}]}
+  }
+},
+{
+  id:"warsaw", name:"Warsaw", country:"Poland", flag:"🇵🇱", c:"#E63946", on:"#FFFFFF",
+  tag:"Fast-growing, affordable and full of student life, with very cheap dorms.",
+  pills:[["Dorm","€100–180"],["Transport","~PLN 55 / mo"],["Typical budget","not sourced"]],
+  sections:{
+    stay:{intro:"University dorms are by far the cheapest option, but a room is not guaranteed for every exchange student.",
+      rows:[
+        r("University of Warsaw dorm","PLN 450–650 (≈ €100–140) / month","Refundable deposit, usually one month's rent, paid in cash on arrival.",null,["uwWarsaw"]),
+        r("Warsaw Univ. of Technology dorm","About €150 / month","Allocated by a recruitment process; a room cannot be guaranteed.",null,["wutWarsaw"]),
+        r("AWF Warsaw dorm","PLN 750 (≈ €180) per bed in a double room; deposit PLN 700","Rates for 2025/26; may update in September.",null,["awfWarsaw"]),
+        r("Private room / shared","About €200–400",null,null,["siWarsaw"]),
+        r("ESN partner housing","Pepe Housing is the official ESN partner for accommodation","Check the current discount code on the university page.",null,["wutWarsaw"])
+      ]},
+    move:{intro:"Warsaw's public transport is extensive, and student discounts are large.",
+      rows:[
+        r("Student monthly ticket","PLN 55 (≈ €13); 3 months PLN 140","Single student ticket (75 min): PLN 2.20.","Prices from a 2026/27 university guide, but fares change. Confirm on wtp.waw.pl.",["apsWarsaw"]),
+        r("Student card discount","The Warsaw student card (ELS) gives a 50% discount on public transport","Valid from the first day of the semester.",null,["uwWarsaw"]),
+        r("National trains","Student discounts apply until age 26",null,null,["uwWarsaw"]),
+        r("Proof of student status","A university student card or ISIC",null,null,["apsWarsaw"])
+      ]},
+    eat:{intro:"Warsaw is cheap to eat in, especially at traditional canteens.",
+      blocks:[{title:"What to try",items:[
+        i("Bar mleczny (milk bar)","Traditional cheap canteens serving Polish home cooking at very low prices."),
+        i("Pierogi","Filled dumplings; try ruskie (cheese and potato) first."),
+        i("Żurek","Sour rye soup, often served in bread."),
+        i("Hala Koszyki","Food hall in the centre; pricier but a good meeting place."),
+        i("Student discounts","The student card gives discounts in cinemas, restaurants and bars.",["uwWarsaw"])
+      ]}]},
+    see:{intro:"Most major sights are in or near the Old Town.",
+      blocks:[{title:"Must-see",items:[
+        i("Old Town & Royal Castle","UNESCO-listed, rebuilt after the war.",["siWarsaw"]),
+        i("Warsaw Rising Museum & POLIN","Both are excellent and offer student discounts.",["siWarsaw"]),
+        i("Łazienki Park","Large park with a palace and peacocks."),
+        i("Palace of Culture and Science","Viewing terrace with a panoramic city view."),
+        i("Praga district","Up-and-coming area on the east bank with a strong nightlife.",["siWarsaw"])
+      ]},{title:"Day trips",items:[
+        i("Wilanów Palace","Baroque royal residence on the southern edge of the city."),
+        i("Żelazowa Wola","Birthplace of Chopin, with a park and concerts."),
+        i("Łódź","About 1.5 hours by train; street art and old factories.")
+      ]}]},
+    money:{intro:"The sources used give components, not a total monthly budget.",
+      rows:[
+        r("Dorm","PLN 450–750 (≈ €100–180)",null,null,["uwWarsaw","awfWarsaw","wutWarsaw"]),
+        r("Private room","€200–400",null,null,["siWarsaw"]),
+        r("Student transport","About PLN 55 / month",null,"Confirm current fares.",["apsWarsaw"]),
+        r("Cost check","The University of Warsaw suggests Numbeo for approximate local prices",null,null,["uwWarsaw"]),
+        r("Currency","Polish złoty (PLN), not the euro",null,null,["uwWarsaw"])
+      ]},
+    tips:{intro:"Practicalities for Poland.",
+      blocks:[{title:"Do this early",items:[
+        i("Apply for the dorm","Recruitment opens twice a year; a room is not guaranteed.",["wutWarsaw"]),
+        i("Student card","Apply for the student card shortly before arrival; it is valid from the first day of the semester.",["uwWarsaw"]),
+        i("Health insurance","EU students should carry their European Health Insurance Card (EHIC).",["apsWarsaw"])
+      ]},{title:"Emergency",items:[i("112","EU-wide emergency number.")]}]}
+  }
+}
+];
+
+/* ============ GENERAL TIPS ============ */
+const BEFORE = {
+  intro:"Things that apply to every destination.",
+  items:[
+    i("Housing scams","Never pay a deposit before you have seen the room or a valid contract. Booking verified rooms before arrival is the safest approach, and be cautious if a room in the city is linked to a foreign bank account.",["uniLisErasmus","iscte"]),
+    i("Arrive early","Reports from Lisbon, Rome, Madrid and Vienna all say the same: start the housing search before you leave and arrive a few days before classes.",["belas","wuMadrid","mdwRome","ccAustria"]),
+    i("Health insurance","EU/EEA students should carry a valid European Health Insurance Card (EHIC) for the whole mobility.",["ispa"]),
+    i("Erasmus+ grant","The monthly amount depends on the destination country group. Ask the Erasmus office at your home university for the exact figure."),
+    i("ESN","The Erasmus Student Network section at each university runs welcome weeks, buddy programmes and trips."),
+    i("112","One emergency number works across the EU: 112.")
+  ]
+};
+
+/* ============ RENDERING ============ */
+const SECTIONS=[
+  {id:"stay",label:"Stay",emoji:"🏠",c:"#FF3D81",on:"#FFFFFF"},
+  {id:"move",label:"Transport",emoji:"🚇",c:"#00B8D9",on:"#1B1B3A"},
+  {id:"eat",label:"Food",emoji:"🍽️",c:"#FF8A00",on:"#1B1B3A"},
+  {id:"see",label:"Sights",emoji:"🏛️",c:"#8E44FF",on:"#FFFFFF"},
+  {id:"money",label:"Budget",emoji:"💶",c:"#00C48C",on:"#1B1B3A"},
+  {id:"tips",label:"Essentials",emoji:"🆘",c:"#3D5AFE",on:"#FFFFFF"}
+];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function srcList(keys){
+  const uniq=[...new Set(keys)];
+  if(!uniq.length) return "";
+  return '<div class="sources"><strong>Sources (consulted 13 Oct 2026)</strong><ul>'+uniq.map(k=>{
+    const s=SRC[k]; if(!s) throw new Error("Missing source: "+k);
+    return "<li>"+(s.u?'<a href="'+esc(s.u)+'" target="_blank" rel="noopener noreferrer">'+esc(s.t)+"</a>":esc(s.t))+"</li>";
+  }).join("")+"</ul></div>";
+}
+function rowsHTML(rows){
+  if(!rows||!rows.length) return "";
+  return '<div class="card"><dl class="rows">'+rows.map(x=>
+    "<dt>"+esc(x.k)+"</dt><dd>"+esc(x.v)+(x.n?'<span class="note">'+esc(x.n)+"</span>":"")+(x.w?'<span class="warn">⚠ '+esc(x.w)+"</span>":"")+"</dd>"
+  ).join("")+"</dl></div>";
+}
+function itemsHTML(title,items){
+  return '<div class="card"><h3>'+esc(title)+'</h3><div class="items">'+items.map(x=>
+    '<div class="item"><h4>'+esc(x.h)+"</h4><p>"+esc(x.t)+'</p><span class="badge '+(x.s.length?"src":"loc")+'">'+(x.s.length?"Sourced":"Local knowledge, verify")+"</span></div>"
+  ).join("")+"</div></div>";
+}
+function sectionHTML(sec){
+  const keys=[];
+  (sec.rows||[]).forEach(x=>keys.push(...x.s));
+  (sec.blocks||[]).forEach(b=>b.items.forEach(x=>keys.push(...x.s)));
+  return (sec.intro?'<p class="intro">'+esc(sec.intro)+"</p>":"")+rowsHTML(sec.rows)+(sec.blocks||[]).map(b=>itemsHTML(b.title,b.items)).join("")+srcList(keys);
+}
+function renderChips(active){
+  const all=[{id:"basics",name:"Before you go",c:"#1B1B3A",on:"#fff"},{id:"compare",name:"Compare",c:"#1B1B3A",on:"#fff"}]
+    .concat(CITIES.map(c=>({id:c.id,name:c.flag+" "+c.name,c:c.c,on:c.on,dot:true})));
+  $("#chips").innerHTML=all.map(x=>
+    '<button class="chip" style="--c:'+x.c+";--on:"+x.on+'" data-go="'+x.id+'" '+(x.id===active?'aria-current="true"':"")+">"+(x.dot?'<span class="dot"></span>':"")+esc(x.name)+"</button>"
+  ).join("");
+}
+function renderBasics(){
+  $("#view").innerHTML='<div class="hero" style="--c:#FFC300;--on:#1B1B3A"><h2>Before you go</h2><p class="sub">'+esc(BEFORE.intro)+"</p></div>"+
+    '<div class="panel" style="--sc:#3D5AFE;margin-top:20px">'+itemsHTML("Applies everywhere",BEFORE.items)+srcList(BEFORE.items.flatMap(x=>x.s))+"</div>";
+}
+function renderCompare(){
+  const rows=[
+    ["madrid","€500–800 (avg ~€600)","not sourced","€10 (older sources: €20)","€900–1,300"],
+    ["lisbon","€300–700","Limited ULisboa places","€35–40 (under-23 deals)","€800–1,300"],
+    ["rome","€350–800","not sourced","~€35","€800–1,200"],
+    ["paris","€600–900 (less after APL)","CROUS €200–500","€33–44 (Imagine R)","not sourced"],
+    ["berlin","€450–800 (avg ~€650)","€250–450","€37.80 (semester ticket)","€910–1,200"],
+    ["vienna","€400–600","€280–620","€75 / semester","€1,000–1,400"],
+    ["prague","from ~€400","€180–340","~CZK 180 / 30 days","€750–1,300"],
+    ["warsaw","€200–400","€100–180","~PLN 55 / month","not sourced"]
+  ];
+  $("#view").innerHTML='<div class="hero" style="--c:#00C48C;--on:#1B1B3A"><h2>Compare cities</h2><p class="sub">Indicative monthly figures from the sources in each city page. Click a city for details and links.</p></div>'+
+  '<div class="tablewrap" style="margin-top:20px"><table><thead><tr><th>City</th><th>Shared room</th><th>Dorm</th><th>Student transport</th><th>Typical total / month</th></tr></thead><tbody>'+
+  rows.map(x=>{const c=CITIES.find(c=>c.id===x[0]);return '<tr><td><button data-go="'+c.id+'">'+c.flag+" "+esc(c.name)+"</button></td>"+x.slice(1).map(v=>"<td>"+esc(v)+"</td>").join("")+"</tr>";}).join("")+
+  '</tbody></table></div><p class="intro" style="margin-top:14px">"not sourced" means none of the sources consulted gave a reliable figure. Check your host university for the real number.</p>';
+}
+function renderCity(city,secId){
+  const sec=SECTIONS.find(s=>s.id===secId)||SECTIONS[0];
+  $("#view").innerHTML=
+   '<div class="hero" style="--c:'+city.c+";--on:"+city.on+'"><h2>'+city.flag+" "+esc(city.name)+'</h2><p class="sub">'+esc(city.country)+": "+esc(city.tag)+'</p><div class="pills">'+
+   city.pills.map(p=>'<div class="pill"><b>'+esc(p[0])+"</b>"+esc(p[1])+"</div>").join("")+"</div></div>"+
+   '<div class="tabs" role="tablist">'+SECTIONS.map(s=>'<button class="tab" role="tab" data-sec="'+s.id+'" style="--sc:'+s.c+";--so:"+s.on+'" aria-selected="'+(s.id===sec.id)+'">'+s.emoji+" "+s.label+"</button>").join("")+"</div>"+
+   '<div class="panel" role="tabpanel" style="--sc:'+sec.c+'">'+sectionHTML(city.sections[sec.id])+"</div>";
+  document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{location.hash=city.id+"/"+b.dataset.sec;});
+}
+function route(){
+  const [cid,sid]=(location.hash.replace("#","")||"basics").split("/");
+  renderChips(cid);
+  if(cid==="compare") renderCompare();
+  else if(cid==="basics") renderBasics();
+  else{const city=CITIES.find(c=>c.id===cid); if(city) renderCity(city,sid); else renderBasics();}
+  document.title=(cid==="basics"||cid==="compare"?"Erasmus Capitals Guide":(CITIES.find(c=>c.id===cid)||{name:"Erasmus Capitals Guide"}).name+" | Erasmus Capitals Guide");
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-go]"); if(b){location.hash=b.dataset.go; window.scrollTo({top:0});}
+});
+window.addEventListener("hashchange",route);
+route();
+</script>
+</body>
+</html>
